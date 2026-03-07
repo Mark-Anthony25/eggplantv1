@@ -130,6 +130,8 @@ class WarmupCosineDecay(tf.keras.optimizers.schedules.LearningRateSchedule):
 
 IMG_SIZE = 256
 
+SUPPORTED_EXTENSIONS = ["*.jpg", "*.jpeg", "*.png", "*.bmp", "*.gif"]
+
 CLASS_NAMES = [
     "Healthy",
     "Insect Pest",
@@ -286,7 +288,7 @@ Examples:
         image_paths.append(args.image)
     if args.image_dir:
         img_dir = pathlib.Path(args.image_dir)
-        for ext in ["*.jpg", "*.jpeg", "*.png", "*.bmp", "*.gif"]:
+        for ext in SUPPORTED_EXTENSIONS:
             image_paths.extend(sorted(str(p) for p in img_dir.glob(ext)))
 
     if not image_paths:
